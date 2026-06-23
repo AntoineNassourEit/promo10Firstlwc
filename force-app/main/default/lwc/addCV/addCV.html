@@ -1,0 +1,58 @@
+<template>
+    <div class="slds-p-around_medium">
+        
+        <div class="slds-m-bottom_medium">
+            <h1 class="slds-text-heading_large"><b>{cvData.name}</b></h1>
+            <p class="slds-text-body_regular"><b>{cvData.title}</b></p>
+            <p class="slds-text-body_small">{cvData.email} | {cvData.website} | {cvData.location}</p>
+        </div>
+
+        <hr/>
+
+        <div class="slds-m-bottom_medium">
+            <p class="slds-text-body_regular"><b>PROFESSIONAL SUMMARY</b></p>
+            <p class="slds-text-body_regular">{cvData.summary}</p>
+        </div>
+
+        <div class="slds-m-bottom_medium">
+            <p class="slds-text-body_regular"><b>TECHNICAL SKILLS</b></p>
+            <p class="slds-text-body_regular">{cvData.skills}</p>
+        </div>
+
+        <div class="slds-m-bottom_medium">
+            <p class="slds-text-body_regular"><b>PROFESSIONAL EXPERIENCE</b></p>
+            <template for:each={cvData.experience} for:item="job">
+                <div key={job.company} class="slds-m-bottom_small">
+                    <p class="slds-text-body_regular"><b>{job.role}</b> - {job.company} ({job.period})</p>
+                    <ul class="slds-list_dotted slds-m-left_medium">
+                        <template for:each={job.highlights} for:item="bullet">
+                            <li key={bullet} class="slds-text-body_regular">{bullet}</li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+
+        <div class="slds-m-bottom_medium">
+            <p class="slds-text-body_regular"><b>EDUCATION</b></p>
+            <template for:each={cvData.education} for:item="edu">
+                <p key={edu.degree} class="slds-text-body_regular">{edu.degree} - {edu.school} ({edu.year})</p>
+            </template>
+        </div>
+
+        <div class="slds-m-bottom_medium">
+            <p class="slds-text-body_regular"><b>CERTIFICATIONS AND AWARDS</b></p>
+            <ul class="slds-list_dotted slds-m-left_medium">
+                <template for:each={cvData.certifications} for:item="cert">
+                    <li key={cert} class="slds-text-body_regular">{cert}</li>
+                </template>
+            </ul>
+        </div>
+
+        <div>
+            <p class="slds-text-body_regular"><b>LANGUAGES</b></p>
+            <p class="slds-text-body_regular">{cvData.languages}</p>
+        </div>
+
+    </div>
+</template>
